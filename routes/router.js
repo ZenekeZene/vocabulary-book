@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const words = require('../modules/words')
 const autocomplete = require('../services/autocomplete/autocomplete.service')
 
@@ -9,6 +10,8 @@ router.get(`/`, (req, res) => {
     status: 'running'
   })
 })
+
+router.use(cors())
 
 router.get(`/words`, words.getAllWords)
 router.get(`/words/:id`, words.getWord)
